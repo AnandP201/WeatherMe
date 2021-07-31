@@ -1,4 +1,5 @@
 import React from "react";
+import ForecastWidget from "./ForecastWidget";
 
 const getActualDay = (time) => {
   const arr = [
@@ -24,7 +25,7 @@ const WeatherCard = ({ data }) => {
           <h4 align="right">{data.location.tz_id}</h4>
         </div>
         <h6>
-          {data.location.region}, {data.location.country}
+          {data.location.region} {data.location.country}
         </h6>
       </div>
       <div className="card-body">
@@ -66,9 +67,12 @@ const WeatherCard = ({ data }) => {
             <span className="extra_val">{data.current.wind_kph} km/hr </span>
           </span>
         </div>
+        <div className="widget-div">
+          {data.forecast.forecastday.map((item) => {
+            return <ForecastWidget day={item} key={item.date} />;
+          })}
+        </div>
       </div>
-
-      <div className="card-footer"></div>
     </div>
   );
 };

@@ -30,7 +30,6 @@ const MainPage = () => {
           </InputGroup.Button>
         </InputGroup>
       </div>
-      {result && console.log(result)}
       {result && <WeatherCard data={result} />}
     </div>
   );
